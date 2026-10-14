@@ -45,6 +45,7 @@
         ├── types/spice.ts     # تایپ‌ها و اینترفیس‌های مشترک TypeScript
         ├── lib/fallbackData.ts# کلاینت ارتباط با API جنگو + دیتای پشتیبان بدون وقفه
         ├── app/
+        │   ├── icon.svg       # آیکون برداری اختصاصی برند زَروان (Favicon)
         │   ├── globals.css    # توکن‌های رنگی، بافت نویز آنالوگ، انیمیشن‌ها و Reduced Motion
         │   ├── layout.tsx     # فونت‌های Vazirmatn, Cormorant Garamond, JetBrains Mono و جهت RTL
         │   └── page.tsx       # Server Component بارگذاری‌کننده تجربه زَروان
@@ -91,14 +92,14 @@
 
 ## ۵. دستورات اجرا، تست و بیلد (Verification & Run Commands)
 
-### اجرای بک‌اند (Django):
+### اجرای بک‌اند (Django — پورت پیش‌فرض 8005):
 ```bash
 backend/.venv/bin/python backend/manage.py migrate
 backend/.venv/bin/python backend/manage.py test spices
-backend/.venv/bin/python backend/manage.py runserver 8000
+backend/.venv/bin/python backend/manage.py runserver 127.0.0.1:8005
 ```
 
-### اجرای فرانت‌اند (Next.js):
+### اجرای فرانت‌اند (Next.js — پورت 3000):
 ```bash
 cd frontend
 npm run dev     # اجرا روی پورت 3000
@@ -108,6 +109,10 @@ npm run build   # بررسی صحت تایپ‌های TypeScript و بیلد پ�
 ---
 
 ## ۶. تاریخچه تغییرات زنده (Living Changelog)
+- **2026-10-14 (Local Live Servers & Browser E2E Verification):**
+  - تنظیم پورت پیش‌فرض بک‌اند جنگو روی `127.0.0.1:8005` جهت جلوگیری از تداخل پورت‌های سیستم و اتصال زنده به فرانت‌اند روی `http://localhost:3000`.
+  - افزودن آیکون برداری اختصاصی `frontend/src/app/icon.svg` برای حذف خطای 404 فاوآیکون در کنسول مرورگر.
+  - اجرای کامل تست‌های End-to-End مرورگر (Playwright + Chrome) شامل سوییچ ادویه در Hero، موج ذرات، اسکرول ۴ پرده روایت، فیلتر اطلس حسی، ثبت فرمول آزمایشگاه در دیتابیس SQLite جنگو (`ZRV-LAB-1001`) و تکمیل سفارش در سبد خرید با ۰ خطای کنسول.
 - **2026-10-14 (Initial Full-Stack Release):**
   - طراحی و پیاده‌سازی کامل بک‌اند جنگو (`zarvan_api` و اپلیکیشن `spices`) به همراه ۴ مدل اصلی، دیتای اولیه ۶ ادویه شاخص، ۴ فصل داستانی و ۵ خاستگاه جغرافیایی + تست‌های واحد.
   - طراحی و پیاده‌سازی فرانت‌اند Next.js به سبک Awwwards / Experimental / Motion-Driven / Interactive Storytelling شامل بوم فیزیکی ذرات ادویه، نشانگر موس مغناطیسی، سینت‌سایزر صوتی Web Audio، اسطرلاب سه‌بعدی Hero، روایت اسکرول‌محور، اطلس حسی با رادار ۶ محوره، آزمایشگاه ترکیب ادویه و نقشه توپوگرافی خاستگاه‌ها.

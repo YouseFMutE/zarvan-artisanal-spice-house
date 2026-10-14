@@ -389,7 +389,7 @@ export const FALLBACK_ORIGINS: TerroirOrigin[] = [
 ];
 
 const API_BASE =
-  process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api";
+  process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8005/api";
 
 export async function fetchExperienceBootstrap(): Promise<{
   data: ExperienceBootstrapPayload;
